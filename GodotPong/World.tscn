@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Pong_graphics/sprites.png" type="Texture" id=1]
-[ext_resource path="res://Pong_graphics/bg.jpg" type="Texture" id=2]
+[ext_resource path="res://bruhsd.png" type="Texture" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=5]
@@ -16,9 +16,9 @@ extents = Vector2( 32, 32 )
 
 [node name="World" type="Node"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
-scale = Vector2( 2.048, 1.2 )
+scale = Vector2( 1.06667, 0.833333 )
 texture = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -67,10 +67,10 @@ modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 4 )
 
 [node name="Ball" parent="." instance=ExtResource( 5 )]
-position = Vector2( 512, 304 )
+position = Vector2( 512, 320 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
-volume_db = -6.0
+volume_db = -12.0
 autoplay = true
