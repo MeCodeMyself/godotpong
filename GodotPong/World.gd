@@ -1,16 +1,17 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var PlayerScore = 0
+var OpponentScore = 0
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_Left_body_entered(body):
+	$Ball.position = Vector2(312,512)
+	PlayerScore += 1
 
+func _on_Right_body_entered(body):
+	$Ball.position = Vector2(312,512)
+	OpponentScore += 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$PlayerScore.text = str(PlayerScore)
+	$OpponentScore.text = str(OpponentScore)

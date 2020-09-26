@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Pong_graphics/sprites.png" type="Texture" id=1]
 [ext_resource path="res://bruhsd.png" type="Texture" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=5]
 [ext_resource path="res://AnyConv.com__Hohoemi no Bakudan [Chiptune] - Yuyu Hakusho OP.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Opponent.gd" type="Script" id=7]
+[ext_resource path="res://World.gd" type="Script" id=8]
+[ext_resource path="res://Pong_graphics/PressStart2P-vaV7.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 9 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 8.0
@@ -18,12 +24,40 @@ extents = Vector2( 32, 32 )
 [sub_resource type="CapsuleShape2D" id=4]
 height = 92.0
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 56, 276.939 )
+
 [node name="World" type="Node"]
+script = ExtResource( 8 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
 scale = Vector2( 1.06667, 0.833333 )
 texture = ExtResource( 2 )
+
+[node name="PlayerScore" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+custom_fonts/font = SubResource( 6 )
+text = "Test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpponentScore" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+custom_fonts/font = SubResource( 6 )
+text = "Test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 968, 320 )
@@ -43,7 +77,7 @@ region_rect = Rect2( 58, 12, 34, 126 )
 [node name="Borders" type="Node" parent="."]
 
 [node name="TopBorder" type="StaticBody2D" parent="Borders"]
-position = Vector2( 528, -2.84217e-14 )
+position = Vector2( 528, -16 )
 scale = Vector2( 17.3694, 0.465507 )
 __meta__ = {
 "_edit_group_": true
@@ -57,7 +91,7 @@ modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 4 )
 
 [node name="BottomBorder" type="StaticBody2D" parent="Borders"]
-position = Vector2( 528, 600 )
+position = Vector2( 528, 616 )
 scale = Vector2( 17.3694, 0.465507 )
 __meta__ = {
 "_edit_group_": true
@@ -73,7 +107,7 @@ texture = ExtResource( 4 )
 [node name="Ball" parent="." instance=ExtResource( 5 )]
 position = Vector2( 512, 312 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
 volume_db = -12.0
@@ -93,3 +127,23 @@ shape = SubResource( 4 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 8, 12, 34, 126 )
+
+[node name="Left" type="Area2D" parent="."]
+position = Vector2( -56, 296 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+shape = SubResource( 5 )
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2( 1080, 304 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+shape = SubResource( 5 )
+[connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_Right_body_entered"]
