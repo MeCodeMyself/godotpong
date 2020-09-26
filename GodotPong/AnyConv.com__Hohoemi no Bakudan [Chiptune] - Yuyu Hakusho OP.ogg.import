@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AnyConv.com__Hohoemi no Bakudan [Chiptune] - Yuyu Hakusho OP.ogg-a4514a6ffec11fe37433d761e9f9134b.oggstr"
+
+[deps]
+
+source_file="res://AnyConv.com__Hohoemi no Bakudan [Chiptune] - Yuyu Hakusho OP.ogg"
+dest_files=[ "res://.import/AnyConv.com__Hohoemi no Bakudan [Chiptune] - Yuyu Hakusho OP.ogg-a4514a6ffec11fe37433d761e9f9134b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
