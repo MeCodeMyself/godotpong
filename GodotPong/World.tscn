@@ -38,8 +38,9 @@ texture = ExtResource( 2 )
 [node name="PlayerScore" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -200.0
+margin_left = 200.0
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0.0431373, 1, 1 )
 text = "Test"
 align = 1
 valign = 1
@@ -50,8 +51,10 @@ __meta__ = {
 [node name="OpponentScore" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 200.0
+margin_left = -200.0
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Test"
 align = 1
 valign = 1
@@ -60,7 +63,7 @@ __meta__ = {
 }
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 968, 320 )
+position = Vector2( 976, 320 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -114,7 +117,7 @@ volume_db = -12.0
 autoplay = true
 
 [node name="Opponent" type="KinematicBody2D" parent="."]
-position = Vector2( 56, 320 )
+position = Vector2( 48, 320 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
